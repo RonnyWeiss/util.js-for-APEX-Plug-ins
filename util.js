@@ -1,5 +1,5 @@
 var util = {
-    featureInfo: {
+    featureDetails: {
         name: "#name_of_the_feature#",
         scriptVersion: "1.0",
         utilVersion: "1.4",
