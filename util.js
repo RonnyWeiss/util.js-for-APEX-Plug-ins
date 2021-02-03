@@ -278,39 +278,65 @@ var util = {
     },
     printDOMMessage: {
         show: function (id, text, icon, color) {
-            var div = $("<div></div>")
-                .css("margin", "12px")
-                .css("text-align", "center")
-                .css("padding", "35px 0")
-                .addClass("dominfomessagediv");
+            if ($(id).height() >= 150) {
+                var div = $("<div></div>")
+                    .css("margin", "12px")
+                    .css("text-align", "center")
+                    .css("padding", "10px 0")
+                    .addClass("dominfomessagediv");
 
-            var subDiv = $("<div></div>");
+                var subDiv = $("<div></div>");
 
-            var subDivSpan = $("<span></span>")
-                .addClass("fa")
-                .addClass(icon || "fa-info-circle-o")
-                .addClass("fa-2x")
-                .css("height", "32px")
-                .css("width", "32px")
-                .css("color", "#D0D0D0")
-                .css("margin-bottom", "16px")
-                .css("color", color || "inhherit");
+                var iconSpan = $("<span></span>")
+                    .addClass("fa")
+                    .addClass(icon || "fa-info-circle-o")
+                    .addClass("fa-2x")
+                    .css("height", "32px")
+                    .css("width", "32px")
+                    .css("margin-bottom", "16px")
+                    .css("color", color || "#D0D0D0");
 
-            subDiv.append(subDivSpan);
+                subDiv.append(iconSpan);
 
-            var span = $("<span></span>")
-                .text(text)
-                .css("display", "block")
-                .css("color", "#707070")
-                .css("text-overflow", "ellipsis")
-                .css("overflow", "hidden")
-                .css("white-space", "nowrap")
-                .css("font-size", "12px");
+                var textSpan = $("<span></span>")
+                    .text(text)
+                    .css("display", "block")
+                    .css("color", "#707070")
+                    .css("text-overflow", "ellipsis")
+                    .css("overflow", "hidden")
+                    .css("white-space", "nowrap")
+                    .css("font-size", "12px");
 
-            div
-                .append(subDiv)
-                .append(span);
+                div
+                    .append(subDiv)
+                    .append(textSpan);
+            } else {
+                var div = $("<div></div>")
+                    .css("margin", "10px")
+                    .css("text-align", "center")
+                    .addClass("dominfomessagediv");
 
+                var iconSpan = $("<span></span>")
+                    .addClass("fa")
+                    .addClass(icon || "fa-info-circle-o")
+                    .css("font-size", "22px")
+                    .css("line-height", "26px")
+                    .css("margin-right", "5px")
+                    .css("color", color || "#D0D0D0");
+
+                var textSpan = $("<span></span>")
+                    .text(text)
+                    .css("color", "#707070")
+                    .css("text-overflow", "ellipsis")
+                    .css("overflow", "hidden")
+                    .css("white-space", "nowrap")
+                    .css("font-size", "12px")
+                    .css("line-height", "20px");
+
+                div
+                    .append(iconSpan)
+                    .append(textSpan);
+            }
             $(id).append(div);
         },
         hide: function (id) {
