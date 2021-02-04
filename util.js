@@ -378,7 +378,20 @@ var util = {
     },
     splitString2Array: function (pString) {
         if (typeof pString !== "undefined" && pString !== null && pString != "" && pString.length > 0) {
-            return apex.server.chunk(pString);
+            if (apex && apex.server && apex.server.chunk) {
+                return apex.server.chunk(pString);
+            } else {
+                /* apex.server.chunk only avail on APEX 18.2+ */
+                var splitSize = 8000;
+                var tmpSplit;
+                var retArr = [];
+                if (pString.length > splitSize) {
+                    for (retArr = [], tmpSplit = 0; tmpSplit < pString.length;) retArr.push(pString.substr(tmpSplit, splitSize)), tmpSplit += splitSize;
+                    return retArr
+                }
+                retArr.push(pString);
+                return retArr;
+            }
         } else {
             return [];
         }
