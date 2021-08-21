@@ -2,7 +2,7 @@ var util = {
     featureDetails: {
         name: "#name_of_the_feature#",
         scriptVersion: "1.0",
-        utilVersion: "1.4",
+        utilVersion: "1.5",
         url: "https://github.com/RonnyWeiss",
         license: "MIT"
     },
@@ -442,7 +442,7 @@ var util = {
         return Math.floor(Math.random() * (max - min + 1) + min);
     },
     copy2Clipboard: function (pElement) {
-        var $temp = $("<input>");
+        var $temp = $("<textarea>");
         $("body").append($temp);
         var str = $(pElement).text() || $(pElement).val();
         $temp.val(str).select();
