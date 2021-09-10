@@ -153,7 +153,7 @@ var util = {
             .replace(/#x27;/g, "'")
             .replace(/&#x2F;/g, "\\");
     },
-    link: function (pLink, pTarget = "_top") {
+    link: function (pLink, pTarget = "_parent") {
         if (typeof pLink !== "undefined" && pLink !== null && pLink != "") {
             window.open(pLink, pTarget);
         }
