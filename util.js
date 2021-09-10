@@ -153,13 +153,9 @@ var util = {
             .replace(/#x27;/g, "'")
             .replace(/&#x2F;/g, "\\");
     },
-    link: function (pLink, pTarget) {
+    link: function (pLink, pTarget = "_top") {
         if (typeof pLink !== "undefined" && pLink !== null && pLink != "") {
-            if (typeof pTarget !== "undefined" && pTarget !== null && pTarget != "") {
-                window.open(pLink, pTarget);
-            } else {
-                return window.parent.location.href = pLink;
-            }
+            window.open(pLink, pTarget);
         }
     },
     loader: {
