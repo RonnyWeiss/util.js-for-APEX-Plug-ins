@@ -2,7 +2,7 @@ var util = {
     featureDetails: {
         name: "#name_of_the_feature#",
         scriptVersion: "1.0",
-        utilVersion: "1.5",
+        utilVersion: "1.6",
         url: "https://github.com/RonnyWeiss",
         license: "MIT"
     },
@@ -153,11 +153,13 @@ var util = {
             .replace(/#x27;/g, "'")
             .replace(/&#x2F;/g, "\\");
     },
-    link: function (link, tabbed) {
-        if (tabbed) {
-            window.open(link, "_blank");
-        } else {
-            return window.parent.location.href = link;
+    link: function (pLink, pTarget) {
+        if (typeof pLink !== "undefined" && pLink !== null && pLink != "") {
+            if (typeof pTarget !== "undefined" && pTarget !== null && pTarget != "") {
+                window.open(pLink, pTarget);
+            } else {
+                return window.parent.location.href = pLink;
+            }
         }
     },
     loader: {
