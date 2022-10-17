@@ -4,7 +4,7 @@ const util = {
     featureDetails: {
         name: "#name_of_the_feature#",
         scriptVersion: "1.0",
-        utilVersion: "22.09.05",
+        utilVersion: "22.10.17",
         url: "https://github.com/RonnyWeiss",
         license: "MIT"
     },
@@ -28,6 +28,16 @@ const util = {
         } else {
             return typeof pObj;
         }
+    },
+    debounce: function ( pFunction, pTimeout = 80 ){
+        let timer;
+        return ( ...args ) => {
+            clearTimeout( timer );
+            timer = setTimeout( 
+                function() { 
+                    pFunction.apply( this, args );
+                }, pTimeout );
+        };
     },
     parseISOTimeString: function ( str ) {
         try {
@@ -417,9 +427,9 @@ const util = {
         return "ontouchstart" in window;
     },
     isBetween: function ( pValue, pValue2, pRange ) {
-        const range = pRange || 0;
-        let min = pValue2 - range;
-        let max = pValue2 + range;
+        const range = pRange || 0,
+              min = pValue2 - range,
+              max = pValue2 + range;
         return ( pValue >= min && pValue <= max );
     },
     numPad: function ( number ) {
