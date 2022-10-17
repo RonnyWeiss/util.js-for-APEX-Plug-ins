@@ -29,7 +29,7 @@ const util = {
             return typeof pObj;
         }
     },
-    debounce: function ( pFunction, pTimeout = 80 ){
+    debounce: function ( pFunction, pTimeout = 50 ){
         let timer;
         return ( ...args ) => {
             clearTimeout( timer );
@@ -223,6 +223,7 @@ const util = {
                 if ( $( "#dynToolTip" ).length === 0 ) {
                     const tooltip = $( "<div></div>" )
                         .attr( "id", "dynToolTip" )
+                        .css("color", "#111")
                         .css( "max-width", "400px" )
                         .css( "position", "absolute" )
                         .css( "top", "0px" )
