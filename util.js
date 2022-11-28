@@ -4,7 +4,7 @@ const util = {
     featureDetails: {
         name: "#name_of_the_feature#",
         scriptVersion: "1.0",
-        utilVersion: "22.10.17",
+        utilVersion: "22.11.28",
         url: "https://github.com/RonnyWeiss",
         license: "MIT"
     },
@@ -223,7 +223,7 @@ const util = {
                 if ( $( "#dynToolTip" ).length === 0 ) {
                     const tooltip = $( "<div></div>" )
                         .attr( "id", "dynToolTip" )
-                        .css("color", "#111")
+                        .css( "color", "#111" )
                         .css( "max-width", "400px" )
                         .css( "position", "absolute" )
                         .css( "top", "0px" )
@@ -486,21 +486,6 @@ const util = {
             return pStr.length + ( tmp ? tmp.length : 0 );
         }
         return 0;
-    },
-    debounce: function ( pFunction, pWaitTime, pImmediate ) {
-        let timeout;
-        return function () {
-            const context = this;
-            const args = arguments;
-            const later = function () {
-                timeout = null;
-                if ( !pImmediate ) {pFunction.apply( context, args );}
-            };
-            const callNow = pImmediate && !timeout;
-            clearTimeout( timeout );
-            timeout = setTimeout( later, pWaitTime || 300 );
-            if ( callNow ) {pFunction.apply( context, args );}
-        };
     },
     localStorage: {
         check: function () {
